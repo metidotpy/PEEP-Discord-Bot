@@ -283,6 +283,69 @@ videos=[
     "https://www.youtube.com/watch?v=fzV_QZODisQ&list=PLaGNXpUYDxPqBqTvaJ3XBYSXmDSdUDg7f&index=34"
 ]
 
+#lil peep slowed and reverbs song
+slowed=[
+    "https://soundcloud.com/peepslowedsongs/lil-peep-five-degrees-slow-reverb",
+    "https://soundcloud.com/peepslowedsongs/lil-peep-gym-class-slow-reverb",
+    "https://soundcloud.com/peepslowedsongs/lil-peep-mud-on-my-gucci-slow-reverb",
+    "https://soundcloud.com/peepslowedsongs/lil-peep-yunggoth-pick-me-up-slow-reverb",
+    "https://soundcloud.com/peepslowedsongs/lil-peep-lil-tracy-white-tee-slow-reverb",
+    "https://soundcloud.com/peepslowedsongs/anothersong",
+    "https://soundcloud.com/peepslowedsongs/beatit",
+    "https://soundcloud.com/peepslowedsongs/bitchimakillyou",
+    "https://soundcloud.com/peepslowedsongs/crybaby",
+    "https://soundcloud.com/peepslowedsongs/driveway",
+    "https://soundcloud.com/peepslowedsongs/giveuthemoon",
+    "https://soundcloud.com/peepslowedsongs/letitflow",
+    "https://soundcloud.com/peepslowedsongs/lietome",
+    "https://soundcloud.com/peepslowedsongs/lilkennedy",
+    "https://soundcloud.com/peepslowedsongs/prayidie",
+    "https://soundcloud.com/peepslowedsongs/smokepurpponabean",
+    "https://soundcloud.com/peepslowedsongs/teenromance",
+    "https://soundcloud.com/peepslowedsongs/thewayiseethings",
+    "https://soundcloud.com/peepslowedsongs/wethinktoomuch",
+    "https://soundcloud.com/sad-slowed-down/lil-peep-xxxtentacion-falling-down-slowed-reverb",
+    "https://soundcloud.com/exstacy-750149327/nuts-lil-peep-slowed-reverb",
+    "https://soundcloud.com/wrathslowed/lil-peep-star-shopping-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-tracy-lil-peep-your-favorite-dress-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-cobain-w-lil-tracy-slowed-reverb",
+    "https://soundcloud.com/bishopkane/beamer-boy-slowed-and-reverb",
+    "https://soundcloud.com/dumbkid4ever/lil-peep-16-lines-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-omfg-8d-audio-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-save-that-shit-8d-slowed-reverb",
+    "https://soundcloud.com/wrathslowed/lil-peep-benz-truck-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-praying-to-the-sky-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-nothing-to-u-slowed-reverb",
+    "https://soundcloud.com/yungslater/lil-peep-tracy-giving-girls-cocaine-slowed-reverb",
+    "https://soundcloud.com/suicidez/lil-peep-sex-with-my-ex-og-slowedreverb",
+    "https://soundcloud.com/pgltm/california-world-lil-peep-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-feelz-slowed-reverb",
+    "https://soundcloud.com/archiveplusplus/lil-peep-x-horse-head-right-here-slowed-reverb",
+    "https://soundcloud.com/archiveplusplus/lil-peep-x-lil-tracy-dying-out-west-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-tonight-slowed-reverb",
+    "https://soundcloud.com/idanked-bass-boosted/haunt-u-w-lil-peep-bass-1",
+    "https://soundcloud.com/michael-mattessich/lil-peep-fingers-slowed-reverb",
+    "https://soundcloud.com/user-391251155/lil-peep-bullet-slowed-reverb",
+    "https://soundcloud.com/user-391251155/waste-of-time-lil-peep-without-bathsaltbryce-slowed-reverb-extended-lyrics",
+    "https://soundcloud.com/user-306262264/lil-peep-ghost-girl-slowed-reverb",
+    "https://soundcloud.com/matt-barr-751282972/lil-peep-better-off-dying-slowed-reverb",
+    "https://soundcloud.com/jtslowed/lil-peep-4-gold-chains-ft-clams-casino-slowed-reverb",
+    "https://soundcloud.com/wrathslowed/lil-peep-give-u-the-moon-slowed-reverb",
+    "https://soundcloud.com/sternmark/yesterday-lil-peep-slowed-verision",
+    "https://soundcloud.com/hasumu/lil-peep-u-said-slowed-reverb",
+    "https://soundcloud.com/user-763199435/cold-hart-lil-peep-me-and-you-slowed-reverb",
+    "https://soundcloud.com/glossgawd/lil-peep-about-u-slowed-reverb",
+    "https://soundcloud.com/archiveplusplus/lil-peep-x-lil-tracy-i-crash-you-crash-slowed-reverb",
+    "https://soundcloud.com/skrxxws/lil-peep-absolute-in-doubt-slowed-reverbdelay",
+    "https://soundcloud.com/313newsnickers/lil-peep-dont-panic",
+    "https://soundcloud.com/user-306262264/smokeasac-overdose-ft-lil-peep-x-lil-tracy-slowed-reverb",
+    "https://soundcloud.com/white-savage-704588476/lil-peep-broken-smile-oldslowedreverb",
+    "https://soundcloud.com/user-521137190/lil-peep-ft-juice-wrld-idgaf",
+    "https://soundcloud.com/user-297878873/lil-peep-moving-on-slowed-rain-reverb",
+    "https://soundcloud.com/chxris/lil-peep-the-way-i-see-things-slowedreverb-and-rain"
+]
+
+
 #make help command
 @client.command(aliases=["help"])
 async def _help(ctx):
@@ -328,7 +391,6 @@ async def _rest(ctx):
     embed.set_author(name=ctx.author.name,icon_url=ctx.author.avatar_url)
     embed.set_footer(text="Requested By {}".format(ctx.author),icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
-
 
 
 
@@ -395,6 +457,17 @@ f'''
 {random.choice(videos)}
 '''
     )
+
+#lil peep random slowed and reverbs song
+@client.command(aliaese=["slowed","peepslowed","slow","slowedpeep","reverb","peepreverb","reverbpeep"])
+async def _slowed(ctx):
+    await ctx.send(
+f'''
+**`lil peep random slowed & reverb musics`**
+{random.choice(slowed)}
+'''
+    )
+
 
 #dead on the codes
 @client.command()
