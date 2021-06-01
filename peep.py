@@ -1,10 +1,16 @@
 #import moduls
+from asyncio import sleep
 from collections import namedtuple
 import discord,random
 from discord import client
 from discord import embeds
+from discord import colour
+from discord import message
+from discord import channel
 from discord.embeds import Embed
-from discord.ext import commands
+from discord.ext import commands,tasks
+from discord.voice_client import VoiceClient
+
 
 #make a command prefix and client variable
 
@@ -14,6 +20,27 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="peep help"))
     print("WE ARE READY FOR NOW!")
 
+#Error Handeling
+@client.event
+async def on_error_command(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        embed1=discord.Embed(
+            name="Missing Arguments",
+            colour=discord.Colour.blurple()
+        )
+        embed1.set_author(name=ctx.author.name,icon_url=ctx.author.icon_url)
+        embed1.set_footer(text="Requested By {}".format(ctx.author),icon_url=ctx.author.avatar_url)
+        embed1.add_field(name="Missing",value="Please Compelete All Arguments")
+        await ctx.send(embed=embed1)
+    elif isinstance(error, commands.MissingPermissions):
+        embed2=discord.Embed(
+            name="Missing Permision",
+            colour=discord.Colour.blurple()
+        )
+        embed2.set_author(name=ctx.author.name,icon_url=ctx.author.icon_url)
+        embed2.set_footer(text="Requested By {}".format(ctx.author),icon_url=ctx.author.avatar_url)
+        embed2.add_field(name="Missing",value="Please Compelete All Arguments")
+        await ctx.send(embed=embed2)
 
 #sadPlaylists
 sads=[
@@ -344,7 +371,145 @@ slowed=[
     "https://soundcloud.com/user-297878873/lil-peep-moving-on-slowed-rain-reverb",
     "https://soundcloud.com/chxris/lil-peep-the-way-i-see-things-slowedreverb-and-rain"
 ]
+#lil peep live musics
+lives=[
+    "https://www.youtube.com/watch?v=YzIZXiG3gXk",
+    "https://www.youtube.com/watch?v=5mqd4l6dhWg",
+    "https://www.youtube.com/watch?v=M9N2EKE_5BI",
+    "https://www.youtube.com/watch?v=v_zlw55gLTc",
+    "https://www.youtube.com/watch?v=5ORJ9yGaqRc",
+    "https://www.youtube.com/watch?v=z6kk377l1m4",
+    "https://www.youtube.com/watch?v=Txj4ehuDDq0",
+    "https://www.youtube.com/watch?v=rWtfX0jZZP0",
+    "https://www.youtube.com/watch?v=j0a_2czRuGk",
+    "https://www.youtube.com/watch?v=87aMWOkNni0",
+    "https://www.youtube.com/watch?v=1bHylk9_GwQ",
+    "https://www.youtube.com/watch?v=uZVLv0yCyG8",
+    "https://www.youtube.com/watch?v=GL7Qd4BFPnE",
+    "https://www.youtube.com/watch?v=0T7BX0oJQjE",
+    "https://www.youtube.com/watch?v=i7GTDv6adVY",
+    "https://www.youtube.com/watch?v=jhjKwOEaJTc",
+    "https://www.youtube.com/watch?v=2YErDmoAsMU",
+    "https://www.youtube.com/watch?v=5ecbjBK7euM",
+    "https://www.youtube.com/watch?v=Wbox5VYEz1Q",
+    "https://www.youtube.com/watch?v=VG9spvZxHAs",
+    "https://www.youtube.com/watch?v=wcsaLTfhxQo",
+    "https://www.youtube.com/watch?v=4RiQIo-B2KI",
+    "https://www.youtube.com/watch?v=c_rMC5cC4Fk",
+    "https://www.youtube.com/watch?v=ArFpbFYBgkc",
+    "https://www.youtube.com/watch?v=L6hV-tmRc_c",
+    "https://www.youtube.com/watch?v=I96QuzMR3pM",
 
+]
+#lil peep covers
+covers=[
+    "https://www.youtube.com/watch?v=XmOpuq64EUs",
+    "https://www.youtube.com/watch?v=oJpk3pCWKKA",
+    "https://www.youtube.com/watch?v=dqn7B3rUTUg",
+    "https://www.youtube.com/watch?v=iyzS4T0LQCE",
+    "https://www.youtube.com/watch?v=i-nYAwiyy0Q",
+    "https://www.youtube.com/watch?v=bDoFJDXPFxg",
+    "https://www.youtube.com/watch?v=2z_pvYGK-8E",
+    "https://www.youtube.com/watch?v=PPzDv2jjR3g",
+    "https://www.youtube.com/watch?v=WLHxBb4ZDwM",
+    "https://www.youtube.com/watch?v=dHAgghjv0t0",
+    "https://www.youtube.com/watch?v=4Z9tt3C1ocA",
+    "https://www.youtube.com/watch?v=k44riOLgxMs",
+    "https://www.youtube.com/watch?v=5fLXi9tABu0",
+    "https://www.youtube.com/watch?v=f760fM68bDo",
+    "https://www.youtube.com/watch?v=Lj80NDkLEGw",
+    "https://www.youtube.com/watch?v=qKTBVU2VTPw",
+    "https://www.youtube.com/watch?v=u0DLP6VmOww",
+    "https://www.youtube.com/watch?v=QrDqAQpwXCc",
+    "https://www.youtube.com/watch?v=zN5wQx7hxLY",
+    "https://www.youtube.com/watch?v=3DPz6TR7KcQ",
+    "https://www.youtube.com/watch?v=Pwv-5AaNi84",
+    "https://www.youtube.com/watch?v=pViIZnkY8Rw",
+    "https://www.youtube.com/watch?v=7EbMHp2QOJs",
+    "https://www.youtube.com/watch?v=LeI-6ZRps4s",
+    "https://www.youtube.com/watch?v=x1JtutI72Qk",
+    "https://www.youtube.com/watch?v=PNqYuO-0y3M",
+    "https://www.youtube.com/watch?v=jFDV4e51Wkc",
+    "https://www.youtube.com/watch?v=1cHp7HV8nEA",
+    "https://www.youtube.com/watch?v=9OY3R_JUnxc",
+    "https://www.youtube.com/watch?v=qqafRNLS1Os",
+    "https://www.youtube.com/watch?v=TZf6ZORwO2E",
+    "https://www.youtube.com/watch?v=ygqfkgU41X4",
+    "https://www.youtube.com/watch?v=zZ4l1a4bItE",
+    "https://www.youtube.com/watch?v=LW2UQhMxG7U",
+    "https://www.youtube.com/watch?v=UQBD3fF_kKQ",
+    "https://www.youtube.com/watch?v=orW3Vwnrszs",
+    "https://www.youtube.com/watch?v=SgBDsgU06QQ",
+    "https://www.youtube.com/watch?v=uy-z3gIC-Eo",
+    "https://www.youtube.com/watch?v=KiYfGY58TXs",
+    "https://www.youtube.com/watch?v=5GQSw-TRli4",
+    "https://www.youtube.com/watch?v=mlsKhxw-d_Y&t=21s",
+    "https://www.youtube.com/watch?v=nRm6aQmkeu8",
+    "https://www.youtube.com/watch?v=suVuvgGYkPU",
+    "https://www.youtube.com/watch?v=lVB7DxIn9Qs",
+    "https://www.youtube.com/watch?v=lhKInyENKtc",
+    "https://www.youtube.com/watch?v=Ixlnq4H84N8",
+    "https://www.youtube.com/watch?v=Q__fHQfYbvY",
+    "https://www.youtube.com/watch?v=1udr2n3nTsc",
+    "https://www.youtube.com/watch?v=gVDgMZTVdCo",
+    "https://www.youtube.com/watch?v=0LIGIP9vm6g",
+    "https://www.youtube.com/watch?v=3DPz6TR7KcQ",
+    "https://www.youtube.com/watch?v=dqn7B3rUTUg",
+    "https://www.youtube.com/watch?v=lbB5B7_HoQQ",
+    "https://www.youtube.com/watch?v=x1JtutI72Qk",
+    "https://www.youtube.com/watch?v=N-0DxKGsvGY",
+    "https://www.youtube.com/watch?v=0PUFK08i8eM",
+    "https://www.youtube.com/watch?v=ZjOnYHmA0jo",
+    "https://www.youtube.com/watch?v=H1_InTJGMKs",
+    "https://www.youtube.com/watch?v=UlgyBUsaJY8",
+    "https://www.youtube.com/watch?v=LHnpkk7cqyU",
+    "https://www.youtube.com/watch?v=_qds7IyHBvE",
+    "https://www.youtube.com/watch?v=Biimv1SI9JM",
+    "https://www.youtube.com/watch?v=UM_lfDRfTMo",
+    "https://www.youtube.com/watch?v=JWpsqAvfF0A",
+    "https://www.youtube.com/watch?v=ejfBlVsIBKg",
+    "https://www.youtube.com/watch?v=792Zt3ZgMmc",
+    "https://www.youtube.com/watch?v=bnf-nhB3W0Q",
+    "https://www.youtube.com/watch?v=5YghYw0lzNw",
+    "https://www.youtube.com/watch?v=yZ7Ma4I7kwo",
+    "https://www.youtube.com/watch?v=-fQsJQWdPOk",
+    "https://www.youtube.com/watch?v=ihjTSH_TxcE",
+    "https://www.youtube.com/watch?v=UsfdM1tJzEk",
+    "https://www.youtube.com/watch?v=3QrG8EJzlc4",
+    "https://www.youtube.com/watch?v=Q4qmEX2sRgA",
+    "https://www.youtube.com/watch?v=WQ_4P1VVgsQ",
+    "https://www.youtube.com/watch?v=eS6DpYdgbts",
+    "https://www.youtube.com/watch?v=_fRXeqAoIMU",
+    "https://www.youtube.com/watch?v=qCmD2mtQJLg",
+    "https://www.youtube.com/watch?v=nHFEnIfblIg",
+    "https://www.youtube.com/watch?v=vDZE2LT_1eg",
+    "https://www.youtube.com/watch?v=T1MehDeMF2Y",
+    "https://www.youtube.com/watch?v=CumZDZRH23Q",
+    "https://www.youtube.com/watch?v=g6ZRTJyPFFc",
+    "https://www.youtube.com/watch?v=0hX-zox6c8I",
+    "https://www.youtube.com/watch?v=h95qEZzPZz4",
+    "https://www.youtube.com/watch?v=qLigEnxB6Ks",
+    "https://www.youtube.com/watch?v=1NQrechTD3o",
+    "https://www.youtube.com/watch?v=w-XZq0rjNJo",
+    "https://www.youtube.com/watch?v=IjLMDGEBECI",
+    "https://www.youtube.com/watch?v=RQGiylNFBIQ",
+    "https://www.youtube.com/watch?v=3gylp04jZ1g",
+    "https://www.youtube.com/watch?v=7Yo-IENF9Mw",
+    "https://www.youtube.com/watch?v=fjjN-5CC_iE",
+    "https://www.youtube.com/watch?v=C_Sh8XEmvQg",
+    "https://www.youtube.com/watch?v=LJ30DrOPFrc",
+    "https://www.youtube.com/watch?v=3KCCBXnV8R0",
+    "https://www.youtube.com/watch?v=nWtXFOSqUIo",
+    "https://www.youtube.com/watch?v=brwH_Hm4Yb0",
+    "https://www.youtube.com/watch?v=LBBzXECtaRc",
+    "https://www.youtube.com/watch?v=0t1z6uitxT0",
+    "https://www.youtube.com/watch?v=L7zAzrufUJQ",
+    "https://www.youtube.com/watch?v=qLUImUXCUw0",
+    "https://www.youtube.com/watch?v=aNP5TpyF0rU",
+    "https://www.youtube.com/watch?v=j5AzXsr6VF8",
+    "https://www.youtube.com/watch?v=vDZE2LT_1eg",
+    "https://www.youtube.com/watch?v=cQ_2TxkTnfg"
+]
 
 #make help command
 @client.command(aliases=["help"])
@@ -360,8 +525,12 @@ async def _help(ctx):
     embed.add_field(name="All Music ",value="**`full`**, **`all`**, **`full_music`**",inline=False)
     embed.add_field(name="Random ALbums",value="**`peepalbum`**, **`albumpeep`**, **`album`**, **`randomalbum`**",inline=False)
     embed.add_field(name="Random Playlists",value="**`peeplist`**, **`listpeep`**, **`randompeeplist`**, **`playpeep`**",inline=False)
+    embed.add_field(name="Random Slowed and Reverb Songs",value="**`slowed`**, **`peepslowed`**, **`slowedpeep`**, **`slow`**, **`reverb`**, **`peepreverb`**, **`reverbpeep`**",inline=False)
     embed.add_field(name="Random Music Video",value="**`peepvideo`**, **`videopeep`**, **`video`**, **`musicvideo`**",inline=False)
+    embed.add_field(name="Random Live Music",value="**`live`**, **`peeplive`**, **`livepeep`**",inline=False)
+    embed.add_field(name="Random Cover Music",value="**`cover`**, **`peepcover`**, **`coverpeep`**",inline=False)
     embed.add_field(name="Meti's Playlist",value="**`deadonthecode`**, **`deadonthecode2`**, **`deadbody`**, **`dead`**",inline=False)
+    embed.add_field(name="Version",value="version",inline=False)
     embed.set_author(name=ctx.author.name,icon_url=ctx.author.avatar_url)
     embed.set_footer(text="Requested By {}".format(ctx.author),icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
@@ -459,15 +628,33 @@ f'''
     )
 
 #lil peep random slowed and reverbs song
-@client.command(aliaese=["slowed","peepslowed","slow","slowedpeep","reverb","peepreverb","reverbpeep"])
+@client.command(aliases=["slowed","peepslowed","slow","slowedpeep","reverb","peepreverb","reverbpeep"])
 async def _slowed(ctx):
     await ctx.send(
 f'''
-**`lil peep random slowed & reverb musics`**
+**`lil peep random slowed & reverb musics :)`**
 {random.choice(slowed)}
 '''
     )
 
+#lil peep random live musics
+@client.command(aliases=["live","peeplive","livepeep"])
+async def _live(ctx):
+    await ctx.send(
+f'''
+**`lil peep random live musics :)`**
+{random.choice(lives)}
+'''
+    )
+#lil peep random covers
+@client.command(aliases=["cover","peepcover","coverpeep"])
+async def _cover(ctx):
+    await ctx.send(
+f'''
+**`lil peep random cover musics :)`**
+{random.choice(covers)}
+'''
+    )
 
 #dead on the codes
 @client.command()
@@ -505,5 +692,40 @@ async def dead(ctx):
 https://music.youtube.com/playlist?list=PLfr2oiPg9Y38FBToasI37xwZnovu9c_jm&feature=share
 '''
     )
+
+
+#join channel command
+@client.command(pass_context=True)
+async def join(ctx):
+    # channel=ctx.message.author.voice.channel
+    # await client.join_voice_channel(channel)
+    # author = ctx.message.author
+    # channel = author.voice_channel
+    # await client.join_voice_channel(channel)
+    channel = ctx.author.voice.channel
+    await channel.connect()
+    msg=await ctx.send("Join The Your Channel")
+    await sleep(4)
+    await msg.delete()
+    await sleep(4)
+    
+@client.command(pass_context=True)
+async def leave(ctx):
+    # server=ctx.message.server
+    # voice_client=client.voice_client_in(server)
+    # await voice_client.disconnect()
+    await ctx.voice_client.disconnect()
+    msg=await ctx.send("Leave From Your Channel")
+    await sleep(4)
+    await msg.delete()
+    await sleep(4)
+
+
+
+#
+@client.command(name="version")
+async def _version(ctx):
+    await ctx.send("**PEEP Version Is 1.2**")
+
 
 client.run("ODQ0NzM1MjQ0NjQ4MTg1ODc2.YKWvAA.rnl_1M_DD9Y2bYOZXHVmtR_ioeM")
