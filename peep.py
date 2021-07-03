@@ -324,4 +324,4 @@ async def leave(ctx):
 async def _version(ctx):
     await ctx.send("**PEEP Version Is 1.2**")
 
-client.run("ODQ0NzM1MjQ0NjQ4MTg1ODc2.YKWvAA.rnl_1M_DD9Y2bYOZXHVmtR_ioeM")
+client.run("Your Token")
