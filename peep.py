@@ -47,7 +47,7 @@ async def on_error_command(ctx, error):
 sads=[]
 
 #make sads from json files
-with open("sad_playlists.json", "r") as file_sad:
+with open("./json/sad_playlists.json", "r") as file_sad:
     sads = json.load(file_sad)
 
 #lil peep random musics
@@ -55,7 +55,7 @@ peeps=[]
 
 #make peeps from json files
 
-with open("peep_musics.json", "r") as file_peeps:
+with open("./json/peep_musics.json", "r") as file_peeps:
     peeps = json.load(file_peeps)
 
 
@@ -64,7 +64,7 @@ albums=[]
 
 #make albums from json files
 
-with open("peep_albums.json", "r") as file_albums:
+with open("./json/peep_albums.json", "r") as file_albums:
     albums = json.load(file_albums)
 
 #lil peep random playlist
@@ -72,7 +72,7 @@ playlists=[]
 
 #make playlists from json files
 
-with open("peep_playlists.json", "r") as file_playlist:
+with open("./json/peep_playlists.json", "r") as file_playlist:
     playlists = json.load(file_playlist)
 
 #lil peep random music videos
@@ -80,7 +80,7 @@ videos=[]
 
 #make videos from json files
 
-with open("peep_videos.json", "r") as file_videos:
+with open("./json/peep_videos.json", "r") as file_videos:
     videos = json.load(file_videos)
 
 #lil peep slowed and reverbs song
@@ -88,7 +88,7 @@ slowed=[]
 
 #make slowed from json files
 
-with open("peep_slowed.json", "r") as file_slowed:
+with open("./json/peep_slowed.json", "r") as file_slowed:
     slowed = json.load(file_slowed)
 
 #lil peep live musics
@@ -96,7 +96,7 @@ lives=[]
 
 #make lives from json files
 
-with open("peep_lives.json", "r") as file_lives:
+with open("./json/peep_lives.json", "r") as file_lives:
     lives = json.load(file_lives)
 
 #lil peep covers
@@ -104,7 +104,7 @@ covers=[]
 
 #make covers from json files
 
-with open("peep_covers.json", "r") as file_covers:
+with open("./json/peep_covers.json", "r") as file_covers:
     covers = json.load(file_covers)
 
 
