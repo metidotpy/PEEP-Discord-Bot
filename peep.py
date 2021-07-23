@@ -317,11 +317,9 @@ async def leave(ctx):
     await msg.delete()
     await sleep(4)
 
-
-
-#
+ # add version command
 @client.command(name="version")
 async def _version(ctx):
-    await ctx.send("**PEEP Version Is 1.2**")
+    await ctx.send("**PEEP Version Is 2.0**")
 
 client.run("Your Token")
